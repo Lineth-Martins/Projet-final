@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestao de Pedidos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <header>
+            <h1>Sistema de Gestao de Pedidos</h1>
+            <div class="tabs">
+                <button id="novopedidobtn" class="tab-btn active">Novo Pedido</button>
+                <button id="listpeditbtn" class="tab-btn">Pedidos</button>
+            </div>
+
+
+        </header>
+
+        <main>
+            <!-- Sessão dos novos Pedidos-->
+
+            <section id="novopedido_s" class="active-area">
+                <h2>Submeter Pedido</h2>
+
+                <form id="pedidosForm">
+                    <input type="text" id="nomeEmpresa" placeholder="Nome da Empresa" required>
+                    <select id="tipoPedido" required>
+                        <option value=""> Selecione o tipo de pedido</option>
+                        <option value="Aquisicao de Materiais">Aquisição de Materiais</option>
+                        <option value="Solicitacao de Servicos">Solicitação de Serviços</option>
+                        <option value="Pedido de Reembolso">Pedido de Reembolso</option>
+                        <option value="Pedido de Formacao">Pedido de Formação</option>
+                    </select>
+                    <textarea  id="descricaoPedido" placeholder="Descrição do pedido" required></textarea>
+                    <input type="number" id="valorpedido" placeholder="Valor (€)" required>
+                    <button type="submit">Submeter pedido</button>
+                </form>
+
+
+            </section>
+
+
+        </main>
+
+
+        <!-- Sessão das Listagens dos Pedidos-->
+        <section id="pedidoslist_s" class="section-hidden">
+            <h2>Lista dos Pedidos</h2>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="filtro_1_estado">Filtrar por Estados:</label>
+                    <select id="filtro_1_estado">
+                        <option value="todos">Todos</option>
+                        <option value="PENDING">PENDENTE</option>
+                        <option value="APPROVED">APROVADO</option>
+                        <option value="REJECTED">REJEITADO</option>
+                    </select>
+                </div>
+                  <!-- Estes filtros Podem ser adicionados no futuro -->
+                <!-- <div class="filter-group">
+                    <label for="companyFilter">Filtrar por Empresa:</label>
+                    <select id="companyFilter">
+                        <option value="ALL">Todas Empresas</option>
+                    </select>
+                </div> -->
+                
+                <div class="filter-group">
+                    <label for="filtro_2_tipo">Filter por Tipo:</label>
+                    <select id="filtro_2_tipo">
+                        <option value="todos">Todos</option>
+                        <option value="Aquisicao de Materiais">Aquisição de Materiais</option>
+                        <option value="Solicitacao de Servicos">Solicitação de Serviços</option>
+                        <option value="Pedido de Reembolso">Pedido de Reembolso</option>
+                        <option value="Pedido de Formacao">Pedido de Formação</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="orders-container">
+                <table id="ordersTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Empresa</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Valor (€)</th>
+                            <th>Estado</th>
+                            <th>Data</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list_pedidos">
+                        <!-- Orders will be populated here via JavaScript -->
+                    </tbody>
+                </table>
+                <div id="n_pedidos" class="no-orders-message">Não Foi encontrado nenhum Pedido</div>
+            </div>
+        </section>
+
+
+          <!-- Detalhes do Pedido [Modal] -->
+          <div id="modal_pedidos" class="modal">
+            <div class="modal-content">
+                <span class="fechar_modal">&times;</span>
+                <h2>Detalhes do Pedido</h2>
+                <div id="pedidos_detalhes"></div>
+                <div class="modal-actions" id="ac_modal">
+                    <button class="btn approve-btn" id="aprovBtn">Aprovar</button>
+                    <button class="btn reject-btn" id="rejeitarBtn">Rejeitar</button>
+                </div>
+            </div>
+        </div>
+
+         
+      <!-- Mensagem de confirmação -->
+      <div id="pedidoconfirm" class="message">
+        Pedido feito com successo!
+    </div>
+        
+    </div>
+
+
+    <footer>
+        <p>&copy; 2025 Lineth</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
